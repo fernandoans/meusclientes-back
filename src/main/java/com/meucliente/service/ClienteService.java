@@ -72,7 +72,7 @@ public class ClienteService {
 				repository.save(converter.convertToEntity(clienteDTO));
 				return new ResponseEntity<>(new MensagemDTO(CodBusinessCliente.INCLUIDO_OK), HttpStatus.OK);
 			}
-			return new ResponseEntity<>(new MensagemDTO(mens), HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(new MensagemDTO(mens, 'E'), HttpStatus.NOT_ACCEPTABLE);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -88,7 +88,7 @@ public class ClienteService {
 			}
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(new MensagemDTO(mens), HttpStatus.NOT_ACCEPTABLE);
+		return new ResponseEntity<>(new MensagemDTO(mens, 'E'), HttpStatus.NOT_ACCEPTABLE);
 	}
 
 	public ResponseEntity<MensagemDTO> delete(String cpf) {

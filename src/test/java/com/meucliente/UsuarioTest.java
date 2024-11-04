@@ -1,5 +1,6 @@
 package com.meucliente;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +26,7 @@ class UsuarioTest extends PaiTest {
 		objDTO.setLogin("");
 		objDTO.setSenha("MTIzcXdlMTIz");
 		ResponseEntity<MensagemDTO> response = usuarioCt.logar(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessUsuario.LOGIN_OBRIGATORIO.getDescricao(), msg), "Problema para cadastrar");
 	}
 
@@ -37,7 +38,31 @@ class UsuarioTest extends PaiTest {
 		objDTO.setLogin("SeuJoão");
 		objDTO.setSenha("");
 		ResponseEntity<MensagemDTO> response = usuarioCt.logar(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessUsuario.SENHA_OBRIGATORIA.getDescricao(), msg), "Problema para cadastrar");
+	}
+
+	@Test
+	@DisplayName("Token de Admin")
+	@Order(34)
+	void testTokenAdmin() {
+		UsuarioDTO objDTO = new UsuarioDTO();
+		objDTO.setLogin("admin");
+		objDTO.setSenha("MTIzcXdlIUAj");
+		ResponseEntity<MensagemDTO> response = usuarioCt.logar(objDTO);
+		String msg = response.getBody().getErro();
+		assertNull(msg, "Problema para Logar com o Admin");
+	}
+
+	@Test
+	@DisplayName("Token de Padrão")
+	@Order(35)
+	void testTokenPadrao() {
+		UsuarioDTO objDTO = new UsuarioDTO();
+		objDTO.setLogin("padrão");
+		objDTO.setSenha("MTIzcXdlMTIz");
+		ResponseEntity<MensagemDTO> response = usuarioCt.logar(objDTO);
+		String msg = response.getBody().getErro();
+		assertNull(msg, "Problema para Logar com o Padrão");
 	}
 }

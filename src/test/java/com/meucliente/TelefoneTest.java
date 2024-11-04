@@ -24,7 +24,7 @@ class TelefoneTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(popTelefone(objDTO,"", "56765473"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.TIPO_OBRIGATORIO.getDescricao(), msg), "Não verificado Tipo de Telefone vazio");
 	}
 
@@ -35,7 +35,7 @@ class TelefoneTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(popTelefone(objDTO,"H", "56765473"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.TIPO_ERRADO.getDescricao(), msg), "Não verificado Tipo de Telefone errado");
 	}
 
@@ -46,7 +46,7 @@ class TelefoneTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(popTelefone(objDTO,"T", ""));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.NUMERO_OBRIGATORIO.getDescricao(), msg), "Não verificado Número de Telefone vazio");
 	}
 	
@@ -57,7 +57,7 @@ class TelefoneTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(popTelefone(objDTO,"T", "87543"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.TELEFONE_INCOMPLETO.getDescricao(), msg), "Não verificado Telefone incompleto");
 	}
 	
@@ -68,7 +68,7 @@ class TelefoneTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(popTelefone(objDTO,"T", "87543AEF"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.TELEFONE_MALFORMADO.getDescricao(), msg), "Não verificado Telefone mal formado");
 	}
 }

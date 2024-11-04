@@ -1,5 +1,7 @@
 package com.meucliente.dto;
 
+import java.util.Set;
+
 import com.meucliente.business.enums.CodBusinessCliente;
 import com.meucliente.business.enums.CodBusinessEmail;
 import com.meucliente.business.enums.CodBusinessUsuario;
@@ -9,30 +11,52 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class MensagemDTO {
-  @Getter @Setter private String messagem;
-  
-  public MensagemDTO() {
+	@Getter @Setter private String mensagem;
+	@Getter @Setter private String erro;
+
+	public MensagemDTO() {
+	}
+
+	public MensagemDTO(String msg, char tipo) {
+	  if (tipo == 'E') {
+		  this.setErro(msg);
+	  } else {
+		  this.setMensagem(msg);
+	  }
   }
-  
-  public MensagemDTO(String messagem) {
-    this.setMessagem(messagem);
-  }
-  
-  // Mensagens de Negócio
 
-  public MensagemDTO(CodBusinessCliente en) {
-    this.setMessagem(en.getDescricao());
-  }  
+	// Mensagens de Negócio
 
-  public MensagemDTO(CodBusinessUsuario en) {
-    this.setMessagem(en.getDescricao());
-  }  
+	public MensagemDTO(CodBusinessCliente cod) {
+		if (Set.of(CodBusinessCliente.OK, CodBusinessCliente.INCLUIDO_OK, CodBusinessCliente.ALTERADO_OK, 
+				CodBusinessCliente.EXCLUIDO_OK, CodBusinessCliente.EXCLUIDO_ALL_OK).contains(cod)) {
+			this.setMensagem(cod.getDescricao());
+		} else {
+			this.setErro(cod.getDescricao());
+		}
+	}
 
-  public MensagemDTO(CodBusinessEmail en) {
-    this.setMessagem(en.getDescricao());
-  }  
+	public MensagemDTO(CodBusinessUsuario cod) {
+		if (cod == CodBusinessUsuario.OK) {
+			this.setMensagem(cod.getDescricao());
+		} else {
+			this.setErro(cod.getDescricao());
+		}
+	}
 
-  public MensagemDTO(CodBusinessTelefone en) {
-    this.setMessagem(en.getDescricao());
-  }  
+	public MensagemDTO(CodBusinessEmail cod) {
+		if (cod == CodBusinessEmail.OK) {
+			this.setMensagem(cod.getDescricao());
+		} else {
+			this.setErro(cod.getDescricao());
+		}
+	}
+
+	public MensagemDTO(CodBusinessTelefone cod) {
+		if (cod == CodBusinessTelefone.OK) {
+			this.setMensagem(cod.getDescricao());
+		} else {
+			this.setErro(cod.getDescricao());
+		}
+	}
 }

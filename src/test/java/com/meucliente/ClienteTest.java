@@ -24,7 +24,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setCpf("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.CPF_OBRIGATORIO.getDescricao(), msg), "Não verificado CPF vazio");
 	}
 
@@ -35,7 +35,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setNome("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.NOME_OBRIGATORIO.getDescricao(), msg), "Não verificado NOME vazio");
 	}
 
@@ -46,7 +46,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setNome("AB");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.NOME_3LET_OBRIGATORIO.getDescricao(), msg), "Não verificado NOME menor que 3 caracteres");
 	}
 
@@ -57,7 +57,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setCep("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.CEP_OBRIGATORIO.getDescricao(), msg), "Não verificado CEP");
 	}
 
@@ -68,7 +68,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setLogradouro("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.LOGRADOURO_OBRIGATORIO.getDescricao(), msg), "Não verificado Logradouro");
 	}
 
@@ -79,7 +79,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setBairro("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.BAIRRO_OBRIGATORIO.getDescricao(), msg), "Não verificado Bairro");
 	}
 
@@ -90,7 +90,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setCidade("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.CIDADE_OBRIGATORIA.getDescricao(), msg), "Não verificado Cidade");
 	}
 
@@ -101,7 +101,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setUf("");
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.UF_OBRIGATORIA.getDescricao(), msg), "Não verificado UF");
 	}
 
@@ -112,7 +112,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setEmails(null);
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.EMAIL_OBRIGATORIO.getDescricao(), msg), "Não verificado E-mails");
 	}
 
@@ -123,7 +123,7 @@ class ClienteTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setTelefones(null);
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.TELEFONE_OBRIGATORIO.getDescricao(), msg), "Não verificado Telefones");
 	}
 

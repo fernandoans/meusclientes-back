@@ -24,7 +24,7 @@ class EmailTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setEmails(popEmail(objDTO,""));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessEmail.EMAIL_NAO_INFORMADO.getDescricao(), msg), "Não verificado e-mail vazio");
 	}
 
@@ -35,7 +35,7 @@ class EmailTest extends PaiTest {
 		ClienteDTO objDTO = montarClienteCompleto();
 		objDTO.setEmails(popEmail(objDTO,"joaodasilva.com.br"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
-		String msg = response.getBody().getMessagem();
+		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessEmail.EMAIL_MALFORMADO.getDescricao(), msg), "Não verificado e-mail mal formado");
 	}
 }
