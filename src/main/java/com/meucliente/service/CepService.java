@@ -21,8 +21,8 @@ public class CepService {
 		if (FuncoesBusiness.naoContemValor(cep)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-		cep = FuncoesBusiness.removerMascaraCEP(cep);
-		if (FuncoesBusiness.isValidarComercial(cep)) {
+		if (FuncoesBusiness.isValidarCep(cep)) {
+			cep = FuncoesBusiness.removerMascaraCEP(cep);
 	        String url = String.format("https://viacep.com.br/ws/%s/json/", cep);
 	        Mono<CepDTO> response = webClientBuilder.build()
 	                .get()

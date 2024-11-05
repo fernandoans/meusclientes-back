@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 
 public final class FuncoesBusiness {
 	
+	// Expressão regular para CPF
+	private static final String CPF_REGEX = "^(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})$";
+	// Expressão regular para CEP
+	private static final String CEP_REGEX = "^\\d{5}-\\d{3}$";
 	// Expressão regular para celular (9 dígitos)
 	private static final String CELULAR_REGEX = "^\\d{5}-\\d{4}";
 	// Expressão regular para comercial (8 dígitos)
@@ -13,6 +17,8 @@ public final class FuncoesBusiness {
 	// Expressão regular para email
 	private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 
+	private static final Pattern CPF_PATTERN = Pattern.compile(CPF_REGEX);
+	private static final Pattern CEP_PATTERN = Pattern.compile(CEP_REGEX);
 	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 	private static final Pattern CELULAR_PATTERN = Pattern.compile(CELULAR_REGEX);
 	private static final Pattern COMMERCIAL_PATTERN = Pattern.compile(COMMERCIAL_REGEX);
@@ -65,6 +71,16 @@ public final class FuncoesBusiness {
 
 	public static String removerMascaraTelefone(String telefoneComMascara) {
 		return telefoneComMascara.replace("-", "");
+	}
+
+	public static boolean isValidarCPF(String numero) {
+		Matcher matcher = CPF_PATTERN.matcher(numero);
+		return matcher.matches();
+	}
+
+	public static boolean isValidarCep(String numero) {
+		Matcher matcher = CEP_PATTERN.matcher(numero);
+		return matcher.matches();
 	}
 
 	public static boolean isValidarCelular(String numero) {

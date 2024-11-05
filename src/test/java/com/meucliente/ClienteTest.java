@@ -29,6 +29,17 @@ class ClienteTest extends PaiTest {
 	}
 
 	@Test
+	@DisplayName("Cliente com CPF mal formado")
+	@Order(10)
+	void testClienteCpfMalFormado() {
+		ClienteDTO objDTO = montarClienteCompleto();
+		objDTO.setCpf("461-354-211-15");
+		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
+		String msg = response.getBody().getErro();
+		assertTrue(compStr(CodBusinessCliente.CPF_MALFORMADO.getDescricao(), msg), "Não verificado CPF mal formado");
+	}
+
+	@Test
 	@DisplayName("Cliente sem nome")
 	@Order(11)
 	void testClienteSemNome() {
@@ -48,6 +59,17 @@ class ClienteTest extends PaiTest {
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
 		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessCliente.NOME_3LET_OBRIGATORIO.getDescricao(), msg), "Não verificado NOME menor que 3 caracteres");
+	}
+
+	@Test
+	@DisplayName("Cliente sem CEP mal formado")
+	@Order(13)
+	void testClienteCepMalFormado() {
+		ClienteDTO objDTO = montarClienteCompleto();
+		objDTO.setCep("70757*220");
+		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
+		String msg = response.getBody().getErro();
+		assertTrue(compStr(CodBusinessCliente.CEP_MALFORMADO.getDescricao(), msg), "Não verificado CEP mal formado");
 	}
 
 	@Test

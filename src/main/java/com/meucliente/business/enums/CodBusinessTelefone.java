@@ -6,7 +6,7 @@ public enum CodBusinessTelefone {
   TIPO_ERRADO("Tipo do Telefone incorreto. "),
   NUMERO_OBRIGATORIO("Número do Telefone não foi informado. "),
   TELEFONE_INCOMPLETO("Quantidade de Dígitos do telefone errada. "),
-  TELEFONE_MALFORMADO("Número do telefone errado. ");
+  TELEFONE_MALFORMADO("Número do telefone inválido, fora do padrão. ");
   
   private String descricao;
 

@@ -33,7 +33,7 @@ Para ter o JAR executável do projeto, classes de teste unitário são executada
 ```
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
 ```
 
 Ativar o ambiente produtivo
