@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 public final class FuncoesBusiness {
 	
 	// Expressão regular para celular (9 dígitos)
-	private static final String CELULAR_REGEX = "^\\d{9}$";
+	private static final String CELULAR_REGEX = "^\\d{5}-\\d{4}";
 	// Expressão regular para comercial (8 dígitos)
-	private static final String COMMERCIAL_REGEX = "^\\d{8}$";
+	private static final String COMMERCIAL_REGEX = "^\\d{4}-\\d{4}$";
 	// Expressão regular para email
 	private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 

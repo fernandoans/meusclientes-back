@@ -19,14 +19,16 @@ public class TelefoneBusiness {
 			return CodBusinessTelefone.NUMERO_OBRIGATORIO;
 		}
 		if (telefone.getTipo().charAt(0) == 'C') {
-			if (telefone.getNumero().length() < 9) {
+			// Considerando 1 digito a mais por causa da máscara
+			if (telefone.getNumero().length() < 10) {
 				return CodBusinessTelefone.TELEFONE_INCOMPLETO;
 			}
 			if (!FuncoesBusiness.isValidarCelular(telefone.getNumero())) {
 				return CodBusinessTelefone.TELEFONE_MALFORMADO;
 			}
 		} else {
-			if (telefone.getNumero().length() < 8) {
+			// Considerando 1 digito a mais por causa da máscara
+			if (telefone.getNumero().length() < 9) {
 				return CodBusinessTelefone.TELEFONE_INCOMPLETO;
 			}
 			if (!FuncoesBusiness.isValidarComercial(telefone.getNumero())) {

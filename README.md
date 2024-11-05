@@ -19,10 +19,11 @@ Para esta parte foram utilizadas as seguintes tecnologias:
 * Banco Postgres (detalhes abaixo)
 
 Para a parte do front-end (MeusClientesFront) foram utilizadas as seguintes tecnologias:
-* React.js 11
+* React.js 18.3.1
 * Node.js 18.20.4
 * npm 18.3.1
-* Bootstrap 4.0
+* Bootstrap 5.3.3
+* Axios 1.7.7
 
 ## Compilar
 Este projeto utiliza o Maven disponível no Spring Tool Suite 4 na versão 3.9.9, assim basta executar o processo:
@@ -32,7 +33,7 @@ Para ter o JAR executável do projeto, classes de teste unitário são executada
 ```
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
 ```
 
 Ativar o ambiente produtivo

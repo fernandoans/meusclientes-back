@@ -75,8 +75,8 @@ class PaiTest {
 		// Adiciona Email
 		objDTO.setEmails(popEmail(null, "fernando.anselmo74@gmail.com"));
 		// Adiciona Telefone
-		objDTO.setTelefones(popTelefone(null, "C", "998740763"));
-		objDTO.setTelefones(popTelefone(objDTO, "R", "32015834"));
+		objDTO.setTelefones(popTelefone(null, "C", "99874-0763"));
+		objDTO.setTelefones(popTelefone(objDTO, "R", "3201-5834"));
 		return objDTO;
 	}
 	

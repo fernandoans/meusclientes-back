@@ -62,11 +62,22 @@ class TelefoneTest extends PaiTest {
 	}
 	
 	@Test
-	@DisplayName("Telefone Trabalho mal formado")
+	@DisplayName("Telefone Trabalho mal formado com letras")
 	@Order(27)
 	void testNumeroTelefoneTrabalhoMalFormado() {
 		ClienteDTO objDTO = montarClienteCompleto();
-		objDTO.setTelefones(popTelefone(objDTO,"T", "87543AEF"));
+		objDTO.setTelefones(popTelefone(objDTO,"T", "8754-3AEF"));
+		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
+		String msg = response.getBody().getErro();
+		assertTrue(compStr(CodBusinessTelefone.TELEFONE_MALFORMADO.getDescricao(), msg), "Não verificado Telefone mal formado");
+	}
+
+	@Test
+	@DisplayName("Telefone Sem máscara correta")
+	@Order(28)
+	void testNumeroTelefoneTrabalhoMalFormado2() {
+		ClienteDTO objDTO = montarClienteCompleto();
+		objDTO.setTelefones(popTelefone(objDTO,"T", "8786.5432"));
 		ResponseEntity<MensagemDTO> response = clienteCt.adicionarCliente(objDTO);
 		String msg = response.getBody().getErro();
 		assertTrue(compStr(CodBusinessTelefone.TELEFONE_MALFORMADO.getDescricao(), msg), "Não verificado Telefone mal formado");
