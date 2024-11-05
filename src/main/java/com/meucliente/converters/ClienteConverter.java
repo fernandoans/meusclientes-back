@@ -1,6 +1,9 @@
 package com.meucliente.converters;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +32,7 @@ public class ClienteConverter {
 
 		// Obter os telefones
 		Telefone tel;
-		Set<Telefone> telefones = new HashSet<>();
+		List<Telefone> telefones = new ArrayList<>();
 		Set<TelefoneDTO> telefonesDto = clienteDTO.getTelefones();
 		for (TelefoneDTO telDto : telefonesDto) {
 			tel = new Telefone();
@@ -45,7 +48,7 @@ public class ClienteConverter {
 
 		// Obter os emails
 		Email ema;
-		Set<Email> emails = new HashSet<>();
+		List<Email> emails = new ArrayList<>();
 		Set<EmailDTO> emailsDto = clienteDTO.getEmails();
 		for (EmailDTO emaDto : emailsDto) {
 			ema = new Email();
@@ -75,7 +78,7 @@ public class ClienteConverter {
 		// Obter os telefones
 		TelefoneDTO telDto;
 		Set<TelefoneDTO> telefonesDto = new HashSet<>();
-		Set<Telefone> telefones = cliente.getTelefones();
+		List<Telefone> telefones = cliente.getTelefones();
 		for (Telefone tel : telefones) {
 			telDto = new TelefoneDTO();
 			if (FuncoesBusiness.contemValor(tel.getId())) {
@@ -90,7 +93,7 @@ public class ClienteConverter {
 		// Obter os emails
 		EmailDTO emaDto;
 		Set<EmailDTO> emailsDto = new HashSet<>();
-		Set<Email> emails = cliente.getEmails();
+		List<Email> emails = cliente.getEmails();
 		for (Email ema : emails) {
 			emaDto = new EmailDTO();
 			if (FuncoesBusiness.contemValor(ema.getId())) {

@@ -1,6 +1,7 @@
 package com.meucliente.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -50,11 +51,11 @@ public class Cliente implements Serializable {
   
   @OneToMany(mappedBy="cpf", targetEntity = Email.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
-  @Getter @Setter private Set<Email> emails; 
+  @Getter @Setter private List<Email> emails; 
   
   @OneToMany(mappedBy="cpf", targetEntity = Telefone.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
-  @Getter @Setter private Set<Telefone> telefones; 
+  @Getter @Setter private List<Telefone> telefones; 
 
   // Heranças Object
   
