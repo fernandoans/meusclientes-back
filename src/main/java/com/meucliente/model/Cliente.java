@@ -49,11 +49,11 @@ public class Cliente implements Serializable {
   @Column(name = "Complemento")
   @Getter @Setter private String complemento;
   
-  @OneToMany(mappedBy="cpf", targetEntity = Email.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(mappedBy="cpf", targetEntity = Email.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
   @JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
   @Getter @Setter private List<Email> emails; 
   
-  @OneToMany(mappedBy="cpf", targetEntity = Telefone.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(mappedBy="cpf", targetEntity = Telefone.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
   @JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
   @Getter @Setter private List<Telefone> telefones; 
 

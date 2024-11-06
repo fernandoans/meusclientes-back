@@ -63,7 +63,7 @@ public final class FuncoesBusiness {
 	// CAMPO TELEFONE
 
 	public static String aplicarMascaraTelefone(String telefone, char tipo) {
-		if (tipo == 'T') {
+		if (tipo == 'C') {
 			return telefone.substring(0, 5) + "-" + telefone.substring(5);
 		}
 		return telefone.substring(0, 4) + "-" + telefone.substring(4);
