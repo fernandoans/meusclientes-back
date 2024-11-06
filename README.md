@@ -27,7 +27,9 @@ Para a parte do front-end (MeusClientesFront) foram utilizadas as seguintes tecn
 
 ## Compilar
 Este projeto utiliza o Maven disponível no Spring Tool Suite 4 na versão 3.9.9, assim basta executar o processo:
-`mvn clean install
+```
+mvn clean install
+```
 
 Para ter o JAR executável do projeto, classes de teste unitário são executadas nesse processo, todas devem passar sem problemas indicando que o projeto está integro.
 ```
@@ -37,16 +39,19 @@ Para ter o JAR executável do projeto, classes de teste unitário são executada
 ```
 
 Ativar o ambiente produtivo
-`$ java jar -Dspring.profiles.active=prod meucliente-0.1.jar
+```
+$ java jar -Dspring.profiles.active=prod meucliente-0.1.jar
+```
 
 Ativar o ambiente não produtivo
-`$ java jar -Dspring.profiles.active=dev meucliente-0.1.jar
+```
+$ java jar -Dspring.profiles.active=dev meucliente-0.1.jar
+```
 
 ## Detalhes do Projeto
-O primeiro serviço que deve ser chamado é o de login:
-`http://localhost:8080/meusclientes/login/
+O primeiro serviço que deve ser chamado é o de login do tipo GET: http://localhost:8080/meusclientes/login/
 
-Este retornará um TOKEN válido para acesso aos serviços do cliente, existem 2 usuários: padrão e admin, a senha deve ser passada com Base64. O usuário padrão só tem acesso a visualizar os dados enquanto que o admin pode manipulá-los.
+Este retornará um TOKEN válido para acesso aos serviços do cliente, existem 2 usuários: "padrão" e "admin", a senha deve ser passada com Base64. O usuário "padrão" possui somente acesso para visualizar os dados, enquanto que o usuário "admin" pode manipulá-los.
 
 Corpo para o usuário admin:
 ```
@@ -64,7 +69,7 @@ E para o usuário padrão:
 }
 ```
 
-Os outros serviços do Cliente podem ser conhecidos acessando a documentaçã do Swagger. Ativar o BACK, e chamar o seguinte endereço:
+Os outros serviços do Cliente são protegidos por este TOKEN que deve ser repassado para cada um deles como Authorization, estes podem ser conhecidos acessando a documentaçã do Swagger. Ativar o BACK, e chamar o seguinte endereço:
 http://localhost:8080/meusclientes/swagger-ui/index.html#/
 
 ![Tela Inicial](FigSwagger.png)
